@@ -4,7 +4,12 @@ import { Carousel } from "antd";
 import pepper from '../components/img/pepper.jpg'
 import bggif from '../components/img/1oxd.gif'
 import './Main.css'
+//스코롤 모션
+import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, FadeOut, Move, MoveIn, MoveOut, Sticky, StickyIn, StickyOut, Zoom, ZoomIn, ZoomOut } from "react-scroll-motion";
 
+//이거 스코롤 모션
+const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
+const FadeUp = batch(Fade(), Move(), Sticky());
 
 const contentStyle = {
   height: '300px',
@@ -88,6 +93,40 @@ export default function Main() {
         </div>
       </Carousel>
     </div>
+    <ScrollContainer>
+  <ScrollPage>
+    <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -100))}>
+      <span style={{ fontSize: "30px" }}>이것 봐봐랑~ ㅎㅎㅎ 😀</span>
+    </Animator>
+  </ScrollPage>
+  <ScrollPage>
+    <Animator animation={ZoomInScrollOut}>
+      <span style={{ fontSize: "40px" }}>이거 나타난다~ ✨</span>
+    </Animator>
+  </ScrollPage>
+  <ScrollPage>
+    <Animator animation={FadeUp}>
+      <span style={{ fontSize: "40px" }}>이얍!!!! ⛅️</span>
+    </Animator>
+  </ScrollPage>
+  <ScrollPage>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }} >
+      <span style={{ fontSize: "40px" }}>
+        <Animator animation={MoveIn(-500, 0)}>안농~ 👋🏻</Animator>
+        <Animator animation={MoveIn(500, 0)}>만나서 반가웝~! 🙋🏻‍♀️</Animator>
+        - 나는 조영찬 -
+        <Animator animation={MoveOut(500, 0)}>잘가룽~ ✋🏻</Animator>
+        <Animator animation={MoveOut(-500, 0)}>담에 봐욥~!~! 💛</Animator>
+      </span>
+    </div>
+  </ScrollPage>
+  <ScrollPage>
+    <Animator animation={batch(Fade(), Sticky())}>
+      <span style={{ fontSize: "40px" }}>끝!</span>
+      <br/>
+    </Animator>
+  </ScrollPage>
+</ScrollContainer>
       <h1>1</h1>
       <h1>1</h1>
       <h1>1</h1>
