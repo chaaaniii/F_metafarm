@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './login.css';
 // import logo from '../../img/logo.png'
 
@@ -7,26 +7,55 @@ import id from '../components/img/id.png';
 import pw from '../components/img/pw.png';
 
 function Login() {
+    let [JoinLogin,setJoinLogin] = useState('로그인')
+
+
     return (
     <body className='body-login'>
         <div className='login-box'>
-         <form className="login" action="/login" method="post">
-         <div>
-             <img className='sign-icon' src={id} alt='id'/>
-             <input type="text" className='write' placeholder="   ID를 입력하세요"/>
-         </div>
-        
-         <div>
-             <img className='sign-icon' src={pw} alt='password'/>
-             <input type="password" className='write' placeholder="   Password를 입력하세요"/>
-         </div>
-
-         <div className='submit'>
-             <button type="submit" className="btn" onClick='checkPW();'>로그인</button>
-             <p className="margin">계정이 없으신가요? <a href="./signup">회원가입하기</a></p>
-         </div>
-
-         </form>
+            <span>{JoinLogin}</span>
+            <form>
+            {
+              JoinLogin === '로그인'
+              ?(
+                <>
+                <input type="text" placeholder="아이디를 입력하세요"/>
+                <input type="password" placeholder="비밀번호를 입력하세요"/>
+                <button className="JoinLoign-button">{JoinLogin}</button>
+                </>
+              )
+              :(
+                <>
+                <input type="text" placeholder="아이디를 입력하세요"/>
+                <input type="password" placeholder="비밀번호를 입력하세요"/>
+                <button className="JoinLoign-button">{JoinLogin}</button>
+                </>
+              )
+            }
+          </form>
+          <div className="login-foot">
+            {
+              JoinLogin === '회원가입'
+              ?
+              (
+                <>
+                <span>이미 회원이신가요  ?</span>
+                <div className="foot-link" onClick={()=>{
+                setJoinLogin('로그인')
+                }}>로그인</div>
+                </>
+              )
+              :
+              (
+                <>
+                <span>아직 회원이 아니신가요 ?</span>
+                <div className="foot-link" onClick={()=>{
+                setJoinLogin('회원가입')
+                }}>회원가입</div>
+                </>
+              )
+            }
+          </div>
          </div>
      </body>
 );

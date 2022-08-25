@@ -8,6 +8,7 @@ import ImageList from './pages/ImageList';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Footer from "./components/Footer";
+import Home from "./pages/Home"
 // import { AiOutlinePicture } from "react-icons/ai";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
                 <Route path='/' element={<RestAPI/>}></Route>
                 <Route path='/1' element={<Main/>}></Route>
                 <Route path='/main' element={<RestAPI/>}></Route>
-                <Route path='/ImageUpload' element={<RestAPI/>}></Route>
+                <Route path='/dmd' element={<Home/>}></Route>
                 <Route path='/ImageList' element={<ImageList/>}></Route>
                 <Route path='/Login' element={<Login/>}></Route>
                 <Route path='/Signup' element={<Signup/>}></Route>

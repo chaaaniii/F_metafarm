@@ -1,11 +1,14 @@
 import React, { useState, useEffect} from 'react';
 import "antd/dist/antd.min.css";
-import { Carousel } from "antd";
-import pepper from '../components/img/pepper.jpg'
+import { Carousel, Card } from "antd";
+import pepper from '../components/img/berry.jpg'
 import bggif from '../components/img/1oxd.gif'
-import './Main.css'
+import './Main.scss'
+import AOS from "aos";
+import "aos/dist/aos.css";
 //스코롤 모션
 import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, FadeOut, Move, MoveIn, MoveOut, Sticky, StickyIn, StickyOut, Zoom, ZoomIn, ZoomOut } from "react-scroll-motion";
+
 
 //이거 스코롤 모션
 const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
@@ -65,85 +68,85 @@ export default function Main() {
         }
       })
 
+      useEffect(()=>{
+        AOS.init();
+      })
+      
+      const { Meta } = Card;
+
   
   return(
-    <div>
-      <div className='Mainhead'>
-        <h1>AI 병해 탐지!</h1>
-        <h3>이미지를 업로드시 AI가 직접 농작물의 병해를 찾아낸 후 그에 맞는 솔루션을 제공해 드립니다.</h3>
+    <div className='Body'>
+      
+      <div className='banner'>
+        <Carousel autoplay>
+          <div className='Mainhead'>
+            <h1 ><b className="AI">Detect Disease with A.I</b></h1>
+            <h3><span className="AI">A.I로 농작물의 병해를 찾고, 그에 따른 솔루션을 받아보세요.</span></h3>
+          </div>
+          <div className='Mainhead2'>
+            <h1 ><b className="sol">Share your diagnosed solution</b></h1>
+            <h3><span className="sol">진단 받은 솔루션을 통해 개선된 결과를 이용자들과 함께 공유해 보세요.</span></h3>
+          </div>
+          <div className='Mainhead3'>
+            <h1 ><b className="board">Let's talk on the board</b></h1>
+            <h3><span className="board">게시판 안에서 다양한 사람들과 자유롭게 이야기를 나누어 보세요.</span></h3>
+          </div>
+        </Carousel>
       </div>
+
+      <div data-aos="fade-up-left" className= 'Card'>
+        <span className='Card__Card1'>
+          <Card hoverable style={{ width: 330 }} cover={<img src={pepper} />}>
+            <Meta title="AI 진단" description="www.ai진단.com" />
+          </Card>
+        </span>
+        <span className='Card__Card1'>
+        <Card hoverable style={{ width: 330 }} cover={<img src={pepper} />}>
+            <Meta title="AI 진단" description="www.ai진단.com" />
+          </Card>
+        </span>
+        <span className='Card__Card1'>
+        <Card hoverable style={{ width: 330 }} cover={<img src={pepper} />}>
+            <Meta title="AI 진단" description="www.ai진단.com" />
+          </Card>
+        </span>
+      </div>
+
       <div className='Body1'>
-        <div>
-          <h1 className='carou_title'>
-            Best Solution!
-          </h1>
-        </div>
-      <Carousel dotPosition='left' autoplay>
-        <div>
-          <img style={contentStyle} src={pepper}></img>
-        </div>
-        <div>
-          <img style={contentStyle} src={bggif}></img>
-        </div>
-        <div>
-          <img style={contentStyle} src={bggif}></img>
-        </div>
-        <div>
-          <img style={contentStyle} src={bggif}></img>
-        </div>
-      </Carousel>
-    </div>
+        <h1 className='carou_title'>
+          Best Solution!
+        </h1>
+        <Carousel dotPosition='left' autoplay>
+          <div>
+            <img style={contentStyle} src={pepper}></img>
+          </div>
+          <div>
+            <img style={contentStyle} src={bggif}></img>
+          </div>
+          <div>
+            <img style={contentStyle} src={bggif}></img>
+          </div>
+          <div>
+            <img style={contentStyle} src={bggif}></img>
+          </div>
+        </Carousel>
+      </div>
+
     <ScrollContainer>
   <ScrollPage>
-    <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -100))}>
-      <span style={{ fontSize: "30px" }}>이것 봐봐랑~ ㅎㅎㅎ 😀</span>
-    </Animator>
-  </ScrollPage>
-  <ScrollPage>
-    <Animator animation={ZoomInScrollOut}>
-      <span style={{ fontSize: "40px" }}>이거 나타난다~ ✨</span>
-    </Animator>
-  </ScrollPage>
-  <ScrollPage>
-    <Animator animation={FadeUp}>
-      <span style={{ fontSize: "40px" }}>이얍!!!! ⛅️</span>
-    </Animator>
-  </ScrollPage>
-  <ScrollPage>
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }} >
-      <span style={{ fontSize: "40px" }}>
-        <Animator animation={MoveIn(-500, 0)}>안농~ 👋🏻</Animator>
-        <Animator animation={MoveIn(500, 0)}>만나서 반가웝~! 🙋🏻‍♀️</Animator>
-        - 나는 조영찬 -
-        <Animator animation={MoveOut(500, 0)}>잘가룽~ ✋🏻</Animator>
-        <Animator animation={MoveOut(-500, 0)}>담에 봐욥~!~! 💛</Animator>
-      </span>
-    </div>
-  </ScrollPage>
-  <ScrollPage>
-    <Animator animation={batch(Fade(), Sticky())}>
-      <span style={{ fontSize: "40px" }}>끝!</span>
-      <br/>
-    </Animator>
+    <Animator animation={batch(FadeIn(0,500))}>
+     <img style={contentStyle} src={bggif}></img>
+   </Animator>
   </ScrollPage>
 </ScrollContainer>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
-      <h1>1</h1>
           <div >
           <button 
               className={BtnStatus ? "topBtn active" : "topBtn"} // 버튼 노출 여부
               onClick={handleTop}  // 버튼 클릭시 함수 호출
               >TOP</button>
           </div>
-</div>
+    </div>
     
   );
 }

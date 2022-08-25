@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 // import styled from "@emotion/styled";
 import classes from "./Navbar.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import mainlogo from '../components/img/mainlogo.png';
+import mainlogo from '../components/img/metafarm.png';
 import styled from "styled-components";
 
 const MenuLabel = styled.label`
-  background-color: rgb(155, 182, 99, 50%);
+  background-color: rgb(32, 141, 47, 70%);
   position: fixed;
-  top: 3%;
+  top: 1%;
   right: 3%;
   border-radius: 50%;
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 2.8rem;
+  width: 2.8rem;
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
@@ -22,17 +22,16 @@ const MenuLabel = styled.label`
 const Icon = styled.span`
   position: relative;
   background-color: ${(props) => (props.clicked ? "transparent" : "black")};
-  width: 2rem;
+  width: 1.5rem;
   height: 2px;
   display: inline-block;
-  margin-top: 1.2px;
-  margin-bottom : 6.7px;
+  top: -14px;
   transition: all 0.3s;
   &::before,
   &::after {
     content: "";
     background-color: black;
-    width: 2rem;
+    width: 1.5rem;
     height: 2px;
     display: inline-block;
     position: absolute;
@@ -40,11 +39,11 @@ const Icon = styled.span`
     transition: all 0.3s;
   }
   &::before {
-    top: ${(props) => (props.clicked ? "0" : "-0.8rem")};
+    top: ${(props) => (props.clicked ? "0" : "-0.5rem")};
     transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
   }
   &::after {
-    top: ${(props) => (props.clicked ? "0" : "0.8rem")};
+    top: ${(props) => (props.clicked ? "0" : "0.5rem")};
     transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
   }
   ${MenuLabel}:hover &::before {
@@ -139,18 +138,17 @@ const Navbar = () => {
                     <ul>
                         <li>
                             <Link to="/" onClick={menuToggleHandler}>
-                                AI
+                                AI 병해 진단
                             </Link>
                         </li>
                         <li>
-                            <Link to="/dnd" onClick={menuToggleHandler}>
-                                게시판
-                            
+                            <Link to="/dmd" onClick={menuToggleHandler}>
+                                솔루션
                             </Link>
                         </li>
                         <li>
                             <Link to="/RestauR" onClick={menuToggleHandler}>
-                                마켓
+                                게시판
                             </Link>
                         </li>
                         <li>

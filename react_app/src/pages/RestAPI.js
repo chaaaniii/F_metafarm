@@ -47,7 +47,7 @@ function RestAPI() {
         // console.log(typeof(file.name))
         const fd = new FormData();
         fd.append('image', file);
-        fd.append('title', file.name);
+        // fd.append('title', file.name);
         axios
         .post('http://127.0.0.1:8000/api/image/', fd, {
             headers: {
@@ -153,7 +153,67 @@ function RestAPI() {
                     </div>
                 )}
             </div>
-            
+            <div className=''>
+                <button
+                onClick={() => {
+                    axios
+                        .get('http://127.0.0.1:8000/image/',{
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                            }
+                        })
+                        .then((response) => {
+                            
+                            // let copy = response.data['results'] 
+                            // setText(response.data['results'][4].image);
+                            // console.log('response.data-> ', typeof(response.data));
+                            console.log('response-> ', response['status']);
+                            // console.log(response.data['results']);
+                            // console.log(typeof(response.data['results'][0].image));
+                            console.log(response.data[0].image);
+                            setImg(response.data[0].image);
+                        })
+                        .catch(function(error){
+                            console.log(error);
+                        });
+                }}
+                >
+                GET
+                </button>
+                
+
+                {/* <div>
+                    <input type='file' accept='img/*' onChange={(e)=>setImage(e.target.files[0])}></input>
+                    <button onClick={()=>{console.log({image}['image'])}}>Post log</button>
+                    <button onClick={()=>{console.log({title}['title'])}}>Post log</button>
+                    <input 
+                        placeholder='title'
+                        value={title}
+                        onChange={(e)=>setTitle(e.target.value)}
+                    />
+                    <button
+                    onClick={()=>{
+                        const formdata = new FormData();
+                        formdata.append('image', {image}['image']);
+                        formdata.append('title', {title}['title']);
+
+                        axios
+                        .post('http://127.0.0.1:8000/image/', formdata)
+                        .then(function(response){
+                            console.log(response);
+                        })
+                        .catch(function(error){
+                            console.log(error);
+                            console.log({title}['title'])
+                            console.log(typeof({image}['image']))
+                            console.log({image}['image'])
+                        });
+                    }}
+                    >
+                    POST
+                    </button>
+                </div> */}
+            </div>
         </div>
       );
 }
